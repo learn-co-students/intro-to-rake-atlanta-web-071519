@@ -12,6 +12,7 @@ end
 
 end
 
+
 task :environment do 
   require_relative './config/environment'
 end
@@ -23,11 +24,14 @@ end
 
 namespace :db do 
 
+  #  "migrating" our database by applying SQL statements that alter that database.
+  # '=>' needs access to the environment file
   desc 'migrate changes to your database'
   task :migrate => :environment do 
     Student.create_table
   end
-
+  
+  # here is where you would put test data in order to test your code
   desc 'seed the database with some dummy tasks'
   task :seed do 
     require_relative './db/seeds.rb'
